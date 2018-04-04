@@ -43,7 +43,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	Repeat the heading on each page.
 	Colouring due or overdue tasks.-->
 
-<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 	<xsl:strip-space elements="*"/>
 	
 	<xsl:output method="text" indent="yes" omit-xml-declaration="yes" />
@@ -389,10 +389,12 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	<!-- 60 - retain CRLF within comments by adding BR elements ()-->
 	<xsl:template name="fix-breaks">
 		<xsl:param name="text" />
-<!--		<xsl:choose>
+		<xsl:text>
+</xsl:text>
+		<xsl:choose>
 			<xsl:when test="contains($text,'&#13;&#10;')">
 				<xsl:value-of select="substring-before($text,'&#13;&#10;')" />
-				<xsl:element name="br"/>
+<!--				<xsl:element name="br"/>-->
 				<xsl:call-template name="fix-breaks">
 					<xsl:with-param name="text">
 						<xsl:value-of select="substring-after($text,'&#13;&#10;')" />
@@ -402,7 +404,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 			<xsl:otherwise>
 				<xsl:value-of select="$text" />
 			</xsl:otherwise>
-		</xsl:choose>-->
+		</xsl:choose>
 	</xsl:template>
 
 	<!-- 70 - reformat the date into dd mmm yy format-->
