@@ -45,7 +45,8 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 	<xsl:strip-space elements="*"/>
-	<xsl:output method="html" indent="yes" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" encoding="utf-8"/>
+	
+	<xsl:output method="text" indent="yes" omit-xml-declaration="yes" />
 	
 	<!-- ################## Selectable values to customise the report ######################
 	                          To apply setting, enter 1, to turn off setting, enter 0.-->
@@ -82,124 +83,15 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	<xsl:param name="commentlength" select="0" />
 	
 	<xsl:template match="/">
-		<xsl:element name="html">
+<!--		<xsl:element name="html">-->
 			<xsl:apply-templates select="TODOLIST"/>
-		</xsl:element>
+<!--		</xsl:element>-->
 	</xsl:template>
 	<!-- 00 - body of report -->
 	<xsl:template match="TODOLIST">
-		<xsl:element name="head">
-			<xsl:element name="title">
-				<xsl:value-of select="@PROJECTNAME"/>
-			</xsl:element>
-			<xsl:element name="style">
-				<xsl:attribute name="type">text/css</xsl:attribute>
-				<xsl:text>
-					<!--  Note:  Colors: dark grey 808080, mid grey A8A8A8, light grey C0C0C0, vlight CDCDCD-->
-					<!--  Note:  Colors: red FF0000, blue 0000FF, green 008000-->
-					<!-- Note:  padding in a table cell: 10px 20px 15px 5px  -  top, right, bottom, left respectively
-						    (Easy reminder - Clockwise starting with top).  Same for margin.-->
-					table.finished{
-					<!--	This does the outside of the main table - i.e. all tasks
-						border-top: 2px solid Black;
-						border-right: 1px solid Black; 	   
-						border-left: 2px solid Black;  -->
-						border-bottom: 1px solid Black;
-						width: 100%;
-						vertical-align: center;
-					}
-					tr.titlef{
-						font-weight: bold;
-						font-size: 18px;
-					}
-					tr.blankline{
-						font-size: 9px;
-						border-bottom: 2px solid white;
-						}  -->
-					td.headleft{
-						text-align:left;
-					}
-					tr.leadbold{
-						vertical-align: center;
-						font-weight: bold;   
-					}
-					tr.taskdone{
-						color: #D3D3D3;
-						text-decoration: line-through;
-					}					
-					td.tasktitle{
-						text-align:left;
-						vertical-align: center;
-						font-size: 12px;
-					}
-
-					span.tinfo{
-						font-size: 10px;
-						color: #808080
-					}
-					span.tinfodone{
-						font-size: 10px;
-						color: #D3D3D3;
-						text-decoration: line-through;
-					}
-					span.tinfobold{
-						font-weight: bold;
-					}
-					span.tab{
-						padding-left:20px;
-						margin: 0 0 0 0;
-					}
-					td.headborder{
-						border-bottom: 2px solid #CDCDCD;
-					}
-					td.tborder{
-					<!--	border-top: 1px solid #CDCDCD;	-->
-						border-bottom: 1px solid #CDCDCD;
-					}
-					div.commentbox{
-						width: 80%;
-						float: right;
-						margin: 10 1 1 0;
-						padding:5px;
-						display: block;
-						border: 2px dotted #CDCDCD;
-					}
-					div.commentfont{
-						font-style: italic;
-						font-weight: normal;
-						font-size: 9px;
-						color: #C0C0C0;
-					}
-
-					body {
-						font-family: Arial;
-						vertical-align: center;
-					}
-				</xsl:text>
-			</xsl:element>
-		</xsl:element>
-		<xsl:element name="body">
-<!--			<xsl:element name="h3">Project:   <xsl:value-of select="@PROJECTNAME"/>  -  <xsl:value-of select="@REPORTDATE"/>
-			</xsl:element> -->
-			<xsl:element name="table">
-				<xsl:attribute name="class">finished</xsl:attribute>
-				<xsl:attribute name="cellspacing">0</xsl:attribute>
-				<xsl:attribute name="cellpadding">1</xsl:attribute>
-                                <!-- Project name -->				
-				<xsl:element name="tr">
-					<xsl:attribute name="class">titlef</xsl:attribute>
-					<xsl:element name="td">
-						<xsl:attribute name="colspan">1</xsl:attribute>
-						<xsl:attribute name="class">headleft headborder</xsl:attribute>
-						<xsl:text>Project: </xsl:text>
-						<xsl:value-of select="@PROJECTNAME"/>
-						<!--<BR/><BR/>-->
-					</xsl:element>
-				</xsl:element>
+# <xsl:value-of select="@PROJECTNAME"/>  -  <xsl:value-of select="@REPORTDATE"/>
                                 <!-- Main body of the table - the tasks -->				
 				<xsl:apply-templates select="TASK"/>
-			</xsl:element>
-		</xsl:element>
 	</xsl:template>
 	
 	<!-- 10 - table of tasks context -->
@@ -223,22 +115,22 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	
 	<!-- 30 - lead task - child of TODOLIST tag -->
 	<xsl:template name="get_LeadTask">
-		<xsl:element name="tr">
+		
 				<xsl:if test="($boldroottask=1)">
 					<xsl:if test="(@DONEDATESTRING)">
-						<xsl:attribute name="class">leadbold taskdone</xsl:attribute>
+<!--						<xsl:attribute name="class">leadbold taskdone</xsl:attribute>-->
 					</xsl:if>				
 					<xsl:if test="not(@DONEDATESTRING)">
-						<xsl:attribute name="class">leadbold</xsl:attribute>
+<!--						<xsl:attribute name="class">leadbold</xsl:attribute>-->
 					</xsl:if>				
 				</xsl:if>  
 				<xsl:if test="($boldroottask=0)">
 					<xsl:if test="(@DONEDATESTRING)">
-						<xsl:attribute name="class">taskdone</xsl:attribute>
+<!--						<xsl:attribute name="class">taskdone</xsl:attribute>-->
 					</xsl:if>							
 				</xsl:if>  
 			<xsl:call-template name="get_Task_Details"/>
-		</xsl:element>
+<!--		</xsl:element>-->
 	</xsl:template>
 	
 	<!-- 31- single task -->
@@ -270,78 +162,82 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 		<!-- Note:  To add additional information (e.g. category, etc or comments) to the task title in the report, set
 			set the appropriate switches at the top of the code (e.g. category = showcat, comments = showcomments-->
 	<xsl:template name="get_Task_title">
-		<xsl:element name="td">
+<!--		<xsl:element name="td">-->
 
                        <!--Insertion of lines for visual clarity-->
             <xsl:if test="count(ancestor::TASK)=0">		<!--Is a root task-->
 			<!--	<xsl:if test="position()>1">-->
-					<xsl:if test="($lineforRoot=1) or ($lineforTask=1)">
+	<!--				<xsl:if test="($lineforRoot=1) or ($lineforTask=1)">
 						<xsl:attribute name="class">tasktitle tborder</xsl:attribute>
 					</xsl:if>
 					<xsl:if test="($lineforRoot=0) and ($lineforTask=0)">
 						<xsl:attribute name="class">tasktitle</xsl:attribute>
-					</xsl:if>
+					</xsl:if>-->
 			<!--	</xsl:if>-->
  			</xsl:if>
-			<xsl:if test="count(ancestor::TASK)>0">		<!--Is a normal task-->	
+<!--			<xsl:if test="count(ancestor::TASK)>0">		<!-\-Is a normal task-\->	
 				<xsl:if test="($lineforTask=1)">
 					<xsl:attribute name="class">tasktitle tborder</xsl:attribute>
 				</xsl:if> 
 				<xsl:if test="($lineforTask=0)">
 					<xsl:attribute name="class">tasktitle</xsl:attribute>
 				</xsl:if> 
-			</xsl:if> 
-			<xsl:if test="$showtaskcolouring=1">
-				<xsl:attribute name="style">color:<xsl:value-of select="@TEXTWEBCOLOR"/></xsl:attribute>	<!--PRIORITYWEBCOLOR??-->
+			</xsl:if> -->
+<!--			<xsl:if test="$showtaskcolouring=1">
+				<xsl:attribute name="style">color:<xsl:value-of select="@TEXTWEBCOLOR"/></xsl:attribute>	<!-\-PRIORITYWEBCOLOR??-\->
 			</xsl:if>
 			<xsl:if test="$showtaskcolouring=0">
-				<xsl:attribute name="style">color:black</xsl:attribute>	<!--PRIORITYWEBCOLOR??-->
-			</xsl:if>
+				<xsl:attribute name="style">color:black</xsl:attribute>	<!-\-PRIORITYWEBCOLOR??-\->
+			</xsl:if>-->
                                      
 		   <!--Addition of bullet / marker non-root tasks for visual clarity-->
-			<xsl:if test="count(ancestor::TASK)>0">
+<!--			<xsl:if test="count(ancestor::TASK)>0">
 				<xsl:call-template name="tab"/>
 				<xsl:if test="($showdot=1)">
-					<xsl:text>&#183; </xsl:text><!--&middot; middot.  alternatives &#149=bullet; &#187=»-->
+					<xsl:text>&#183; </xsl:text><!-\-&middot; middot.  alternatives &#149=bullet; &#187=»-\->
 				</xsl:if>
-			</xsl:if>
+			</xsl:if>-->
+			
+			<xsl:variable name="titlePrefix" select="
+				string-join((for $i in 1 to count(ancestor::TASK)+1 return '#'),'')"/>
+			
 			
             <!--Task title-->
-            <xsl:value-of select="@TITLE"/>
+			<xsl:value-of select="$titlePrefix"/><xsl:value-of select="@TITLE"/>
 			<xsl:text>&#160; &#160;</xsl:text> <!-- &nbsp;-->
 
             <!--Additional information to the task title-->
-			<xsl:element name="span">
-				<xsl:if test="not(@DONEDATESTRING)">
+<!--			<xsl:element name="span">-->
+<!--				<xsl:if test="not(@DONEDATESTRING)">
 					<xsl:attribute name="class">tinfo</xsl:attribute>
 				</xsl:if>
 				<xsl:if test="(@DONEDATESTRING)">
 					<xsl:attribute name="class">tinfodone</xsl:attribute>
-				</xsl:if>
+				</xsl:if>-->
 	
-				<xsl:if test="@REFID&gt;0">
+			<!--	<xsl:if test="@REFID&gt;0">
 					<xsl:element name="span">
 						<xsl:attribute name="style">font-style: italic</xsl:attribute>
 						<xsl:text> [Ref] </xsl:text>
-		<!--				<xsl:if test="//TASK/@ID=@REFID">
+		<!-\-				<xsl:if test="//TASK/@ID=@REFID">
 							<xsl:text> [foundit] </xsl:text>
-						</xsl:if>		-->				
+						</xsl:if>		-\->				
 					</xsl:element>
-				</xsl:if>
+				</xsl:if>-->
 				<!--Are we able to test the referred task for completeness, and if so, any other useful info? -->
 
-				<xsl:if test="($showflagged=1 and @FLAG)">
+<!--				<xsl:if test="($showflagged=1 and @FLAG)">
 					<xsl:element name="span">
 						<xsl:attribute name="class">tinfobold</xsl:attribute>
 						<xsl:text>[Flagged] </xsl:text>
 					</xsl:element>
-				</xsl:if>
+				</xsl:if>-->
 			    <xsl:if test="($showpriority=1) and @PRIORITY">
-					<xsl:text>    [Priority: </xsl:text>
+					<xsl:text>    [Prio:</xsl:text>
 					<xsl:value-of select="@PRIORITY"/>
 					<xsl:text>]</xsl:text>
 				</xsl:if>
-				<xsl:if test="($showprogress=1) ">
+				<!--<xsl:if test="($showprogress=1) ">
 					<xsl:text>    [Progress: </xsl:text>
 					<xsl:choose>
 						<xsl:when test="(@PERCENTDONE)">
@@ -368,7 +264,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 						</xsl:otherwise>
 					</xsl:choose>			            			            
 					<xsl:text>%]</xsl:text>
-				</xsl:if>
+				</xsl:if>-->
 				<xsl:if test="($showstartdate=1) and @STARTDATESTRING">
 					<xsl:text>    [Start: </xsl:text>
 					<xsl:if test="($showsimpledates=1)">
@@ -438,21 +334,21 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 					<xsl:if test="PERSON[5]">; <xsl:value-of select="PERSON[5]" /></xsl:if>
 					<xsl:text>]</xsl:text>
 				</xsl:if>
-			</xsl:element>
+			<!--</xsl:element>-->
 			
 			<xsl:if test="($showcomments=1) and COMMENTS">
 				<xsl:choose>
 					<xsl:when test="($showformattedcomments=1) and HTMLCOMMENTS">
-						<xsl:element name="div">
-							<xsl:attribute name="class">commentbox</xsl:attribute>
-							<xsl:attribute name="style">color:black</xsl:attribute>
+<!--						<xsl:element name="div">-->
+							<!--<xsl:attribute name="class">commentbox</xsl:attribute>
+							<xsl:attribute name="style">color:black</xsl:attribute>-->
 							<xsl:value-of select="HTMLCOMMENTS" disable-output-escaping="yes"/>
-						</xsl:element>
+						<!--</xsl:element>-->
 					</xsl:when>
 					<xsl:otherwise>
 					<!--	<xsl:call-template name="tab"/>  -->
-						<xsl:element name="div">
-							<xsl:attribute name="class">commentbox commentfont</xsl:attribute>
+<!--						<xsl:element name="div">-->
+<!--							<xsl:attribute name="class">commentbox commentfont</xsl:attribute>-->
 							<xsl:if test="($commentlength=0)">
 								<xsl:call-template name="fix-breaks">
 									<xsl:with-param name="text">
@@ -470,28 +366,28 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 									<xsl:text>  ... </xsl:text>
 								</xsl:if>
 							</xsl:if>
-						</xsl:element>
+						<!--</xsl:element>-->
 					</xsl:otherwise>
 				</xsl:choose>
 			</xsl:if>
-		</xsl:element>
+<!--		</xsl:element>-->
 	</xsl:template>
 	
 	<!-- 50 - It puts spaces in (indents)-->
 	<xsl:template name="tab">
-		<xsl:if test="count(ancestor::TASK)>0">
+<!--		<xsl:if test="count(ancestor::TASK)>0">
 			<xsl:for-each select="(ancestor::TASK)">
 				<xsl:element name="span">
 					<xsl:attribute name="class">tab</xsl:attribute>
 				</xsl:element>
 			</xsl:for-each>
-		</xsl:if>
+		</xsl:if>-->
 	</xsl:template>
 
 	<!-- 60 - retain CRLF within comments by adding BR elements ()-->
 	<xsl:template name="fix-breaks">
 		<xsl:param name="text" />
-		<xsl:choose>
+<!--		<xsl:choose>
 			<xsl:when test="contains($text,'&#13;&#10;')">
 				<xsl:value-of select="substring-before($text,'&#13;&#10;')" />
 				<xsl:element name="br"/>
@@ -504,7 +400,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 			<xsl:otherwise>
 				<xsl:value-of select="$text" />
 			</xsl:otherwise>
-		</xsl:choose>
+		</xsl:choose>-->
 	</xsl:template>
 
 	<!-- 70 - reformat the date into dd mmm yy format-->
