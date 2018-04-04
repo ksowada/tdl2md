@@ -43,7 +43,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	Repeat the heading on each page.
 	Colouring due or overdue tasks.-->
 
-<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:fo="http://www.w3.org/1999/XSL/Format">
 	<xsl:strip-space elements="*"/>
 	<xsl:output method="html" indent="yes" doctype-public="-//W3C//DTD HTML 4.01 Transitional//EN" encoding="utf-8"/>
 	

@@ -1,1 +1,1 @@
-java -cp saxon9he.jar net.sf.saxon.Transform -t -s:input.xml -xsl:tdl2md.xsl -o:output.md
+java -cp %SAXON_HOME%/saxon9he.jar net.sf.saxon.Transform -t -s:input.tdl -xsl:tdl2md.xsl -o:output.md
