@@ -89,7 +89,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	</xsl:template>
 	<!-- 00 - body of report -->
 	<xsl:template match="TODOLIST">
-# <xsl:value-of select="@PROJECTNAME"/>  -  <xsl:value-of select="@REPORTDATE"/>
+<!--# <xsl:value-of select="@PROJECTNAME"/>  -  <xsl:value-of select="@REPORTDATE"/>-->
                                 <!-- Main body of the table - the tasks -->				
 				<xsl:apply-templates select="TASK"/>
 	</xsl:template>
@@ -203,6 +203,8 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 			
 			
             <!--Task title-->
+			<xsl:text>
+</xsl:text>		
 			<xsl:value-of select="$titlePrefix"/><xsl:value-of select="@TITLE"/>
 			<xsl:text>&#160; &#160;</xsl:text> <!-- &nbsp;-->
 
