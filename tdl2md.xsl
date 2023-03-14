@@ -96,10 +96,6 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	<xsl:template match="TASK">
 		<xsl:choose>
 			<xsl:when test="parent::TODOLIST">
-				<!-- 12 - lead task, child of todolist element -->
-				<xsl:if test="$leadspacing=1">
-					<xsl:call-template name="insert_line"/>
-				</xsl:if>
 				<xsl:call-template name="get_LeadTask"/>
 				<xsl:apply-templates select="TASK"/>
 			</xsl:when>
@@ -170,7 +166,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 <!--		<xsl:element name="td">-->
 
                        <!--Insertion of lines for visual clarity-->
-            <xsl:if test="count(ancestor::TASK)=0">		<!--Is a root task-->
+            <!-- <xsl:if test="count(ancestor::TASK)=0">	-->	<!--Is a root task-->
 			<!--	<xsl:if test="position()>1">-->
 	<!--				<xsl:if test="($lineforRoot=1) or ($lineforTask=1)">
 						<xsl:attribute name="class">tasktitle tborder</xsl:attribute>
@@ -179,7 +175,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 						<xsl:attribute name="class">tasktitle</xsl:attribute>
 					</xsl:if>-->
 			<!--	</xsl:if>-->
- 			</xsl:if>
+ 			<!-- </xsl:if> -->
 <!--			<xsl:if test="count(ancestor::TASK)>0">		<!-\-Is a normal task-\->
 				<xsl:if test="($lineforTask=1)">
 					<xsl:attribute name="class">tasktitle tborder</xsl:attribute>
@@ -202,11 +198,10 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 					<xsl:text>&#183; </xsl:text><!-\-&middot; middot.  alternatives &#149=bullet; &#187=»-\->
 				</xsl:if>
 			</xsl:if>-->
-
-			<xsl:variable name="titlePrefix" select="
-				string-join((for $i in 1 to count(ancestor::TASK)+1 return '#'),'')"/>
-
-
+			<xsl:variable name="task_depth" select="count(ancestor::TASK)+1"/>
+			<xsl:variable name="titlePrefix" select="if ($task_depth le 6) then
+				string-join((for $i in 1 to $task_depth return '#'),'') else 
+				concat(for $i in 8 to $task_depth return '&#x20;&#x20;','-')"/>
             <!--Task title-->
 			<xsl:text>
 </xsl:text>
@@ -342,6 +337,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 			<!--</xsl:element>-->
 
 			<xsl:if test="($showcomments=1) and COMMENTS">
+				<xsl:text>&#xA;```</xsl:text>
 				<xsl:choose>
 					<xsl:when test="($showformattedcomments=1) and HTMLCOMMENTS">
 <!--						<xsl:element name="div">-->
@@ -374,6 +370,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 						<!--</xsl:element>-->
 					</xsl:otherwise>
 				</xsl:choose>
+				<xsl:text>&#xA;```</xsl:text>
 			</xsl:if>
 <!--		</xsl:element>-->
 	</xsl:template>

@@ -17,7 +17,6 @@
 - command line %1: file path to .tdl
 - command line %2: optional output file path to .md 
 
-
 ## Files
 This table describes the meaning of the delivered files:
 
@@ -30,6 +29,7 @@ This table describes the meaning of the delivered files:
 | tdl2md.xsl | XSLT Stylesheet to transform ToDoList into Markdown.         |
 
 ## Functions
-- Tasks and Comments will be linearized in Output-Markdown File
-- Links (FILEREFPATH) will be linearized
+- Tasks and Comments are linearized in an Output-Markdown File 
+  - it keep hierarchy but after heading 6 it will use hierarchical unordered lists
+  - Links (FILEREFPATH) will be linearized, at their task
 
