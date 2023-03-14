@@ -29,5 +29,7 @@ This table describes the meaning of the delivered files:
 | tdl2md.sh | Linux Shell Script that call JAVA with SAXON to perform XSLT transformation. |
 | tdl2md.xsl | XSLT Stylesheet to transform ToDoList into Markdown.         |
 
-
+## Functions
+- Tasks and Comments will be linearized in Output-Markdown File
+- Links (FILEREFPATH) will be linearized
 

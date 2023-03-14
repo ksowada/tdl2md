@@ -53,7 +53,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 
 	<!-- To put spacing (extra line for visual separation) in front of a lead task, enter 1.  To remove this, enter 0.
 	       Note, this can be useul when reporting from List View-->
-	<xsl:param name="leadspacing" select="1" />
+	<xsl:param name="leadspacing" select="0" />
 	<!--  To separate tasks with lines (for visual clarity)-->
 	<xsl:param name="lineforTask" select="1" /> <!-- effectively underlines each task-->
 	<xsl:param name="lineforRoot" select="1" /> <!-- puts a line before each root task-->
@@ -83,13 +83,11 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 	<xsl:param name="commentlength" select="0" />
 
 	<xsl:template match="/">
-<!--		<xsl:element name="html">-->
 			<xsl:apply-templates select="TODOLIST"/>
-<!--		</xsl:element>-->
 	</xsl:template>
 	<!-- 00 - body of report -->
 	<xsl:template match="TODOLIST">
-<!--# <xsl:value-of select="@PROJECTNAME"/>  -  <xsl:value-of select="@REPORTDATE"/>-->
+<!--# <xsl:value-of select="@PROJECTNAME"/>  - TODO use it for md  <xsl:value-of select="@REPORTDATE"/>-->
                                 <!-- Main body of the table - the tasks -->
 				<xsl:apply-templates select="TASK"/>
 	</xsl:template>
@@ -108,9 +106,16 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
 			<xsl:otherwise>
 				<!-- 13 - sub tasks / finished and unfinished-->
 				<xsl:call-template name="get_Task"/>
+
+				<xsl:apply-templates select="FILEREFPATH"/> <!-- some links for that task -->
 				<xsl:apply-templates select="TASK"/>
  			</xsl:otherwise>
 		</xsl:choose>
+	</xsl:template>
+
+	<!-- introduce given TASK/FILEREFPATH -->
+	<xsl:template match="FILEREFPATH">
+		<xsl:text>&#xA;[</xsl:text><xsl:value-of select="."/><xsl:text>](</xsl:text><xsl:value-of select="iri-to-uri(.)"/><xsl:text>)</xsl:text>
 	</xsl:template>
 
 	<!-- 30 - lead task - child of TODOLIST tag -->
@@ -205,7 +210,7 @@ June 2103 (added coloured tasks, HTML comments, ability to handle CATEGORY, TAG,
             <!--Task title-->
 			<xsl:text>
 </xsl:text>
-			<xsl:value-of select="$titlePrefix"/><xsl:text>&#160;</xsl:text><xsl:value-of select="@TITLE"/>
+			<xsl:value-of select="$titlePrefix"/><xsl:text>&#x20;</xsl:text><xsl:value-of select="@TITLE"/>
             <!--Additional information to the task title-->
 <!--			<xsl:element name="span">-->
 <!--				<xsl:if test="not(@DONEDATESTRING)">
