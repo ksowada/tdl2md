@@ -6,7 +6,7 @@
 - for printing and publishing or exchanging .tdl to easier editable Markdown .md-file
 - So you can easily export the text content, including links to Markdown
 
-## Requirements
+## ![Screenshot from 2023-03-25 07-35-13](/home/karlito/Desktop/prj/tdl2md/doc/Screenshot from 2023-03-25 07-35-13.png)Requirements
 - Java (matching min. requirement version for SAXON), must be available on PATH
 - Saxon HE (supporting XSL Stylesheet 2.0)
 
