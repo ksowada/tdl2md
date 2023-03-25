@@ -7,6 +7,7 @@
 - So you can easily export the text content, including links to Markdown
 
 <img src="./doc/Screenshot from 2023-03-25 07-35-13.png" alt="Typora-Markdown-View-with-Hierarchy"/>
+
 ## Requirements
 - Java (matching min. requirement version for SAXON), must be available on PATH
 - Saxon HE (supporting XSL Stylesheet 2.0)
