@@ -1,57 +1,302 @@
 
-#Android Realtime   
-##Realtime   
-###RTAndroid   
-####Scheduling Delay   
-Stock Android ~<1ms typ 200us
-RT Android, <30us
-####computation time   
-huge variance in stock android, 
-less variance and faster in RTAndroid
-####Devices   
-    Galaxy S4
-    Nexus 10
-    ODROID XU3/4
-    Raspberry Pi
-( https://rtandroid.embedded.rwth-aachen.de/news/ )
+# webtool
+```
+webtool intgerates cmd from spare-benzin.de and sk-8.de, so it may handle both single-source style
+```
+## Server
+### xampp apache
+[..\..\..\xampp\xampp-control.exe](..%5C..%5C..%5Cxampp%5Cxampp-control.exe)
+[..\..\..\xampp\htdocs](..%5C..%5C..%5Cxampp%5Chtdocs)
+#### phpmyadmin
+[http://localhost/phpmyadmin/](http://localhost/phpmyadmin/)
+#### htdocs
+[..\..\..\..\xampp\htdocs\spare-benzin.de](..%5C..%5C..%5C..%5Cxampp%5Chtdocs%5Cspare-benzin.de)
+#### php
+[http://php.net/](http://php.net/)
+##### sysprovide
+[tdl://O:\_Karl\_Docs\Bindungen\sysprovide.de\sysprovide.de.tdl?1](tdl://O:%5C_Karl%5C_Docs%5CBindungen%5Csysprovide.de%5Csysprovide.de.tdl?1)
+##### comments
+###### commentics
+```
+171031 installed v3.2 
 
-####Google   
+```
+- commentics.org
+```
+14.12.2016 21:21:22
+  spare-benzin.de (ex. sk-8.de)
+  commentics - /comments/bmz (backend)
+    admin-login spb_admin
+    admin-pwd   Kislchen23
+    admin-email karl@spare-benzin.de
+```
+[https://www.commentics.org](https://www.commentics.org)
+- backend - local
+```
+14.12.2016 21:21:22
+  spare-benzin.de (ex. sk-8.de)
+  commentics - /comments/bmz (backend)
+    admin-login spb_admin
+    admin-pwd   Kislchen23
+    admin-email karl@spare-benzin.de
+```
+[http://localhost/php/comments/bmz/](http://localhost/php/comments/bmz/)
+- backend - server
+##### polls
+###### limesurvey.org
+```
+nicht kostenlos
+```
+[https://limesurvey.org](https://limesurvey.org)
+##### search
+###### http://www.sphider.eu/faq.php
+[http://www.sphider.eu/faq.php](http://www.sphider.eu/faq.php)
+###### Sphinx 2.2.11
+[http://sphinxsearch.com/docs/current.html](http://sphinxsearch.com/docs/current.html)
+###### Google
+[https://cse.google.com/cse/](https://cse.google.com/cse/)
+- Benutzerdefinierte Suche
+[https://cse.google.com/cse/create/getcode?cx=003758547979627665477%3A6xjqlzy_hxa](https://cse.google.com/cse/create/getcode?cx=003758547979627665477%3A6xjqlzy_hxa)
+##### statistics
+###### piwik
+[https://piwik.org](https://piwik.org)
+##### xslt-nachbearbeitung soll php-code zufügen
+#### php-wordpress
+```
+infos.xml-Infrastruktur für squirrel nicht gegeben
+wegen guter webhelp nicht im Fokus
+```
+#### Oxygen webhelp
+##### mathml
+###### Chrome kann kein mathml
+[https://www.mediaevent.de/chrome-zieht-mathml-ab/](https://www.mediaevent.de/chrome-zieht-mathml-ab/)
+###### How to add MathML support to DITA customization?
+[https://www.oxygenxml.com/forum/topic11471.html#p33676](https://www.oxygenxml.com/forum/topic11471.html#p33676)
+###### mathjax
+[https://www.mathjax.org/](https://www.mathjax.org/)
+- cdn # working slow
+```
+<script type="text/javascript" async
+  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=MML_CHTML">
+</script>
+( http://docs.mathjax.org/en/latest/start.html )
 
-###Industrial Android™ with emteria.OS   
-	Supported Devices
-	Instantly Usable with emteria.OS.
-	Raspberry Pi 3 Model B
-	 AOSP 7.1  0.5.10  14421
+```
+- mathjax - github
+[https://github.com/mathjax/MathJax/blob/master/MathJax.js](https://github.com/mathjax/MathJax/blob/master/MathJax.js)
+- docs
+[http://docs.mathjax.org/](http://docs.mathjax.org/)
+##### Adding Custom HTML Content in WebHelp Responsive Output
+##### externe html wie Autokosten
+```
+<topicref href="Autokosten/Autokosten-Tabelle.html" format="html" scope="local"
+    navtitle="Autokosten-Rechner" locktitle="yes"/>
+```
+##### Customizing the WebHelp Responsive Output
+[https://www.oxygenxml.com/doc/versions/18.1/ug-editor/topics/wh-responsive-customization-tips.html](https://www.oxygenxml.com/doc/versions/18.1/ug-editor/topics/wh-responsive-customization-tips.html)
+#### xslt-nachbearbeitung
+##### html + <?php ... ?>
+```
+<xsl:processing-instruction name="php">session_start();</xsl:processing-instruction>
+```
+###### sonst funktionier kein PHP code!
+##### mathml => SVG
+```
+mathml in svg manuell übertragen
+```
+## Framework
+### Social Links Icons
+### separate sites
+```
+favicon is only one in dir
+```
+### video (youtube) embed from DITA
+```
+from XREF / embedded Player
+from relatedLinks / external Link
+z.B. SpeedSkating.dita
+```
+### main page
+```
+bootstrap card
+title-pic oben
+unten title
+shortdesc
+link
+```
+### Sitemenu
+```
+done with d3js
+```
+#### Bootstrap 4 Sidebar Menu
+[https://www.codeply.com/go/Y4DrGaoWBN](https://www.codeply.com/go/Y4DrGaoWBN)
+### Tags
+#### index
+### libs
+#### bootstrap
+[https://getbootstrap.com/](https://getbootstrap.com/)
+##### color theme
+[https://bootswatch.com/minty/](https://bootswatch.com/minty/)
+##### codeply - try bootstrap 4
+[https://www.codeply.com/go/nwpIyvWcMD](https://www.codeply.com/go/nwpIyvWcMD)
+#### jquery
+[http://jquery.com/](http://jquery.com/)
+#### underscore
+[http://underscorejs.org/](http://underscorejs.org/)
+#### backbone
+[http://backbonejs.org/#](http://backbonejs.org/#)
+##### todoMVC
+```
+template for forms in diagram
+```
+[http://todomvc.com/examples/backbone/](http://todomvc.com/examples/backbone/)
+#### fontawesome
+[http://fontawesome.io/icons/](http://fontawesome.io/icons/)
+#### uglify.js
+```
+minimize code vor diagram and physics
+```
+[https://github.com/mishoo/UglifyJS](https://github.com/mishoo/UglifyJS)
+##### Minify multiple files with UglifyJS
+[https://stackoverflow.com/questions/8812621/minify-multiple-files-with-uglifyjs](https://stackoverflow.com/questions/8812621/minify-multiple-files-with-uglifyjs)
+##### How can I configure uglifyjs from package.json
+```
+call uglifyjs^
+  src/file1.js^
+  src/file2.js^
+  -cmo bundle.min.js
 
-As one of the world's most popular boards for DIY projects, HYPERLINK "https://www.raspberrypi.org/products/raspberry-pi-3-model-b/" \t "_blank" Raspberry Pi 3deserves the best possible Android™ experience. The emteria.OS provides support to the official accessory devices such as 7" touchscreen or CSI camera without additional configuration.
-	Artista-IoT TFT Controller
-	 AOSP 7.1  0.5.8  40
 
-The Artista-IoT device combines the power of a Raspberry Pi Compute Module 3 (CM3) with a fully integrated display and baseboard solution. Created in cooperation with HYPERLINK "https://www.datadisplay-group.de/en/products/tft-controller/iot-industry-40-raspberry/" \t "_blank" Data Display Group, Artista-IoT is a perfect solution for industrial HMI applications.
-	Geniatech DB IV
-	AOSP 7.1 Coming Soon
+```
+[https://stackoverflow.com/questions/31545443/how-can-i-configure-uglifyjs-from-package-json](https://stackoverflow.com/questions/31545443/how-can-i-configure-uglifyjs-from-package-json)
+#### popper.js
+```
+comes with bootstrap
+```
+[https://popper.js.org/](https://popper.js.org/)
+### Form mailer
+#### Betreff
+### alt =
+### logs
+[.\log\.](.%5Clog%5C.)
+#### separates Verzeichnis
+### mtee
+#### alle skripts von script aus starten
+### 404-Seite
+```
+in Framework integrieren (non-index)
+Bild: WP_20140120_035.jpg
+```
+### github
+#### exclude private data from footer trafo
+#### demo website
+```
+include all functions and delivers documentation and feature site
+```
+### feedin user interaction to server
+#### items may get emotions from User
+##### Hover text
+#### thumbs up
+#### commentics alternative
+```
+commentics increases load time look for easier solution
+```
+[https://www.commentics.org/](https://www.commentics.org/)
+##### deutsch
+### tag cloud
+### tags to category
+#### tdl with tags
+```
+introduce content with tdl
 
-The HYPERLINK "https://www.geniatech.com/product/developer-board-4/" \t "_blank" Geniatech Developer Board IV integrates a Qualcomm Snapdragon 410c SoC with a vast range of connectivity options for use in industrial applications. It is designed to reliably serve in all common application scenarious from the IoT to high-performance set-top boxes.
-	Your Product with Android™
-	Upon Request
 
-Our platform is built in a highly modular fashion and it is easily portable to a wide range of mobile devices and new hardware platforms. Feel free to HYPERLINK "https://emteria.com/#" contact us to request a customized version of emteria.OS for your product.
+```
+##### dita von todo Links mit text und comment
+###### Links
+###### Text
+###### Comment
+###### Status
+#### tdl to content
+#### chore prepare
+```
+before transform enrich content
+```
+##### tdl read
+##### dita fromTdl
+##### ditamap fromTdl
+#### ditavals
+##### product.tdl
+##### if empty autofill
+##### audience.tdl
+### designvorlagen
+#### große Jumbo tolle Codeschnipsel
+[https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data](https://scotch.io/tutorials/how-to-use-the-javascript-fetch-api-to-get-data)
+### search
+```
+javascript
 
-###Realtime in Android   
-The preliminary numbers about Android’s real-time performance vary considerably, depending on the source. In general, though, when the application is relatively simple and the system is lightly loaded with no more than 1 to 5 interrupts per second, and the frequency of interrupts is in the 10 - 30 Hertz range, the number of deadline misses are troubling, but manageable. But when the system is operating under heavy loads with a dozen or so interrupts per second, and the frequency of interrupts is in the 1 to 5 kilohertz range, the Android OS performance degrades drastically.
-( https://www.embedded.com/electronics-blogs/cole-bin/4372870/Real-time-Android--real-possibility--really-really-hard-to-do---or-just-plain-impossible-- )
+```
+#### tipue
+### Gesamtseite
+```
+hierarchische Seiten zusammenfliessen lassen
 
-###Exceed the Android Speed Limit!   
-If your app takes too long and does not finish its calculations in 16 milliseconds, you get what is called a “dropped frame”, and, yes, you already know it. JANK!!
+```
+### feeds rss
+### blog
+### minify css with uglifycss
+### umfragen
+### sitemap at bottom
+```
+allow a small shortened sitemap to be below or above footer
+```
+### assets
+#### js
+##### alles ausser .min.js löschen?
+```
+assets copies only used items
+```
+### git
+[..\..\..\work\svn\webtool.git](..%5C..%5C..%5Cwork%5Csvn%5Cwebtool.git)
+### SEO
+#### categories
+```
+diigo.com quote.com digg.com colivia.de
+reddit.com seoigg.de wikio.de citeulike.org
+folkd.com google.com/bookmarks icio.de social-bookmark.de
+stumbleupon.com
 
-	You, your app, and 16 ms per frame
-As an app developer, you must keep your app consistently at 60 frames per second, and 16 milliseconds per frame, throughout your user’s experience, to avoid jank.
-To get cold, hard data on your app’s rendering performance, use the Profile GPU Rendering tool on your device to discover when and how your app drops frames — we’ll get into the nitty gritty of that in future articles. But if you are in a hurry to make your users happy, you can check out the HYPERLINK "http://developer.android.com/tools/performance/index.html" \t "_blank" Android Performance Profiling Tools documentation right now.
-For a more entertaining version of this section, watch HYPERLINK "https://www.youtube.com/watch?v=CaMTIgxCSqU" \t "_blank" Why 60 fps, which is part of HYPERLINK "https://www.youtube.com/playlist?list=PLOU2XLYxmsIKEOXh5TwZEv89aofHzNCiu" \t "_blank" Android Performance Patterns on YouTube. If you want to jump ahead, check out the HYPERLINK "https://www.udacity.com/course/android-performance--ud825" \t "_blank" Android Performance Course on Udacity. But most importantly, join our HYPERLINK "https://plus.sandbox.google.com/communities/116342551728637785407" \t "_blank" Android Performance G+ Community for great tips about, you guessed it, building performant Android apps.
 
-##Server   
-###Palapa Web Server   
-###WebSockets   
-##Android Hardware   
-###ODROID   
-Android Platinenlösung 39$-59$
+    www.keeeb.com
+    www.pocket.com (Ehemals Read Later)
+    Leseliste-Funktion von Apple
+    www.clipix.com
+    Gloss (Smarte Bookmarks: Speichert Lesezeichen mit Zitaten von Webseiten.)
+    Eine weitere Liste mit 25-Bookmark-Diensten
+    www.19pencils.com (für Schüler und Studenten)
+    www.faviki.com (Tags verknüpft mit Wikipedia)
+    www.tagpacker.com (Organisation von Links über Tags und Tagpacks)
+    www.zotero.org (für Wissenschaftler)
+    www.memit.com
+    Refind
+    Hugit
+```
+### README.md
+[.\README.md](.%5CREADME.md)
+### php
+#### Symfony
+```
+enables JCR means REST based Content Repository
+```
+[tdl://O:\_Karl\_IT\IT.tdl?11475](tdl://O:%5C_Karl%5C_IT%5CIT.tdl?11475)
+[https://symfony.com/at-a-glance](https://symfony.com/at-a-glance)
+### files
+[.](.)
+### dita audience product as extra index
+### date as extra index
+```
+use as blog like wordpress system
+```
+#### Kategorie: neueste
+## Apps
+[..\webtool.de\content\assets\js\apps\cellular\cellular.tdl](..%5Cwebtool.de%5Ccontent%5Cassets%5Cjs%5Capps%5Ccellular%5Ccellular.tdl)
